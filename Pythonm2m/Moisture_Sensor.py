@@ -45,6 +45,7 @@ def write(val):
 def get_moisture_sensor():
 	setup(0x48)
 	#https://github.com/Miceuz/i2c-moisture-sensor/blob/master/README.md
+	#https://github.com/modmypi/Moisture-Sensor/blob/master/moisture.py
 	print ('AIN0 = ', read(2))
 	#print ('AIN1 = ', read(1))
 	tmp = read(2)
