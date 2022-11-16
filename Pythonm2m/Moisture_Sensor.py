@@ -44,7 +44,7 @@ def write(val):
 
 def get_moisture_sensor():
 	setup(0x48)
-
+	#0x20
 	print ('AIN0 = ', read(2))
 	#print ('AIN1 = ', read(1))
 	tmp = read(2)
