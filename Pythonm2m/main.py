@@ -7,8 +7,7 @@ import datetime
 #import fake_val as baro
 import mysql.connector
 
-mydb = mysql.connector.connect(host="185.27.134.10",user="epiz_30583800",password="KaygBrYUyfZn9O",port="3306",database="epiz_30583800_m2m")
-print("aaa")
+"""mydb = mysql.connector.connect(host="185.27.134.10",user="epiz_30583800",password="KaygBrYUyfZn9O",port="3306",database="epiz_30583800_m2m")
 
 
 local_date_time = datetime.datetime.now()
@@ -16,9 +15,10 @@ local_time = local_date_time.time()
 print (local_time)
 hour1 = datetime.time(11, 0, 0)
 hour2 = datetime.time(15, 0, 0)
-
-
 time_count=0
+"""
+
+
 
 while True:
     watering=0
@@ -33,33 +33,26 @@ while True:
     print('Moisture_Sensor:', (Moisture_Sensor))
 
 
-
+"""
     dt_object = datetime.datetime.now()
     time_count +=1
     local_date_time = datetime.datetime.now()
     local_time = local_date_time.time()
     print(time_count)
+"""
+#les valeurs sont variables
+    if ((temperature>18 and temperature<31 ) and (Moisture_Sensor >180) and (pressure >1000 and humidity > 50)) :
+            rl.vanne_on()
+            print('vanne on')
+            time.sleep(5)
+            rl.vanne_off()
+            print('vanne off')
 
-
-    if (time_count>=3 and not(hour2<local_time<hour1)):
-        print("if 1")
-        if ((temperature>8 and temperature<25 ) and Moisture_Sensor >100 ) :
-            print("if 2")
-            if(pressure >10 and humidity < 100):
-                rl.vanne_on()
-                print('vanne on')
-                time.sleep(5)
-                rl.vanne_off()
-                print('vanne off')
-                watering = 1
-                time_count = 0
-                rain_count=0
-            else:
-                rain_count+=1
     time.sleep(5)
 
 
 
+    """ 
     mycursor = mydb.cursor()
 
     sql = "INSERT INTO statistique ( temperature, pressure,humidity,Moisture_Sensor,watering) VALUES (%s, %s,%s,%s,%s)"
@@ -67,4 +60,5 @@ while True:
     mycursor.execute(sql, val)
 
     mydb.commit()
+    """
 
